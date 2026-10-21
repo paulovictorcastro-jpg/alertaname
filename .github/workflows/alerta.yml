@@ -9,8 +9,9 @@ jobs:
   verificar:
     runs-on: ubuntu-latest
     
-    # Adicionado: Concede permissão para o robô abrir a Issue no repositório
+    # Corrigido: Mantém o acesso de leitura ao código E escrita nas Issues
     permissions:
+      contents: read
       issues: write
 
     steps:
