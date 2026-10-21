@@ -15,10 +15,11 @@ def verificar_diario():
                 dados = json.loads(response.read().decode('utf-8'))
                 print("Tipo de resposta:", type(dados).__name__)
                 print("Quantidade de registros:", len(dados) if isinstance(dados, (list, dict)) else "não aplicável")
-              if isinstance(dados, list) and dados:
-              print("Campos do primeiro registro:",
-             list(dados[0].keys()) if isinstance(dados[0], dict)
-             else type(dados[0]).__name__) 
+                if isinstance(dados, list) and dados:
+                    print("Campos do primeiro registro:",
+                      list(dados[0].keys()) 
+                          if isinstance(dados[0], dict)
+                          else type(dados[0]).__name__) 
                
                 texto_completo = json.dumps(dados, ensure_ascii=False).lower()
                 
