@@ -1,0 +1,22 @@
+name: Executar Alerta Diario TCE-RN
+
+on:
+  schedule:
+    - cron: '31 23 * * *'
+  workflow_dispatch:
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Baixar o código do repositório
+      uses: actions/checkout@v4
+
+    # Removido setup-python e pip install. Usamos o Python nativo do Ubuntu.
+    - name: Executar script de verificação
+      env:
+        EMAIL_REMETENTE: ${{ secrets.EMAIL_REMETENTE }}
+        SENHA_APP_GMAIL: ${{ secrets.SENHA_APP_GMAIL }}
+        EMAIL_DESTINATARIO: ${{ secrets.EMAIL_DESTINATARIO }}
+      run: python3 alerta_diario.py
