@@ -30,15 +30,16 @@ def enviar_email():
     msg.attach(MIMEText(corpo, 'plain'))
     
     try:
-        print("🔄 Tentando conectar ao servidor SMTP do Gmail...")
-        server = smtplib.SMTP('://gmail.com', 587)
-        server.starttls()
+        print("🔄 Tentando conectar ao servidor seguro SMTP do Gmail (Porta 465)...")
+        # Mudança para SMTP_SSL na porta 465 para evitar bloqueios de rede/firewall
+        server = smtplib.SMTP_SSL('://gmail.com', 465, timeout=15)
         server.login(EMAIL_REMETENTE, SENHA_APP_GMAIL)
         server.sendmail(EMAIL_REMETENTE, EMAIL_DESTINATARIO, msg.as_string())
         server.quit()
         print("✅ E-mail de alerta enviado com sucesso!")
     except Exception as e:
         print(f"❌ ERRO AO ENVIAR E-MAIL: O Gmail recusou a conexão. Detalhes: {e}")
+
 
 def verificar_diario():
     try:
