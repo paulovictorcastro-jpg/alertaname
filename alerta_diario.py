@@ -12,9 +12,9 @@ URL_API = "https://sisdocs.tce.rn.gov.br/api/v1/DiarioEletronico?publicado=true"
 TERMOS_BUSCA = ["antonio", "gilberto", "jales"]
 
 # O GitHub Actions vai preencher essas variáveis dinamicamente através dos Secrets
-EMAIL_REMETENTE = os.environ.get("m4th3m4t1c0@gmail.com")
-SENHA_APP_GMAIL = os.environ.get("hile uosn hbhw vpyl")
-EMAIL_DESTINATARIO = os.environ.get("raonicl@gmail.com")
+EMAIL_REMETENTE = os.environ.get("EMAIL_REMETENTE")
+SENHA_APP_GMAIL = os.environ.get("SENHA_APP_GMAIL")
+EMAIL_DESTINATARIO = os.environ.get("EMAIL_DESTINATARIO")
 
 def enviar_email():
     if not all([EMAIL_REMETENTE, SENHA_APP_GMAIL, EMAIL_DESTINATARIO]):
