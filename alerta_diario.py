@@ -4,7 +4,7 @@ import sys
 
 URL_API = "https://sisdocs.tce.rn.gov.br/api/v1/DiarioEletronico?publicado=true"
 
-TERMOS_BUSCA = ["raoni"]
+TERMOS_BUSCA = ["jales"]
 
 def verificar_diario():
     try:
