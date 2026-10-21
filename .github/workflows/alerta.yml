@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Baixar o código do repositório
-      uses: actions/checkout@v4
+      uses: actions/checkout@v4.2.2
 
     # Removido setup-python e pip install. Usamos o Python nativo do Ubuntu.
     - name: Executar script de verificação
