@@ -13,6 +13,8 @@ def verificar_diario():
         with urllib.request.urlopen(req, timeout=15) as response:
             if response.status == 200:
                 dados = json.loads(response.read().decode('utf-8'))
+                print("Tipo de resposta:", type(dados).__name__)
+                print("Quantidade de registros:", len(dados) if isinstance(dados, (list, dict)) else "não aplicável")
                 texto_completo = json.dumps(dados, ensure_ascii=False).lower()
                 
                 achou_todos = all(termo in texto_completo for termo in TERMOS_BUSCA)
