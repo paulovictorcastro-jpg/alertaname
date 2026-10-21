@@ -8,6 +8,10 @@ on:
 jobs:
   verificar:
     runs-on: ubuntu-latest
+    
+    # Adicionado: Concede permissão para o robô abrir a Issue no repositório
+    permissions:
+      issues: write
 
     steps:
     - name: Baixar o código do repositório
@@ -15,11 +19,9 @@ jobs:
 
     - name: Executar script de verificação
       id: checagem
-      # O continue-on-error faz o fluxo não "quebrar" em vermelho quando o nome não for achado
       continue-on-error: true
       run: python3 alerta_diario.py
 
-    # Este passo só roda se o script Python terminar com sucesso (ou seja, se achou o nome)
     - name: Criar Alerta por E-mail (via GitHub Issues)
       if: steps.checagem.outcome == 'success'
       uses: imjohnbo/issue-bot@v3
